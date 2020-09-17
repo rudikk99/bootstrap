@@ -49,7 +49,8 @@
                     </div> 
                     <div class="modal-body">   
                         <form id="reserveForm">
-                            <div class="form-group row">
+                            <div class="form-group">
+
                                 <label for="numberOfCampers" class="col-sm-6 col-form-label">Number of Campers</label>
                                 <div class="col">
                                     <select class="form-control" id="numberOfCampers" name="numberOfCampers">
@@ -82,21 +83,16 @@
                                     </label>
                                 </div>    
                             </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
                         </form>  
                     </div>      
-                    <div class="modal-footer col-sm-6">
-                            <!--button -->
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
                </div>
             </div>
         </div>
 
-                        
-        
-        
-        
         <nav class="navbar navbar-expand-sm navbar-dark sticky-top">
             <div class="container"> <!--container div changes padding around menu -->
                 <a class="navbar-brand" href="#"><img src="img/logo.png" height="30" width="30"></a>
@@ -200,7 +196,23 @@
                             <span class="carousel-control-next-icon"></span>
                             <span class="sr-only">Next</span>
                         </a>
-                        <!-- carousel left/right puttons END-->
+<!-- carousel left/right puttons END-->
+<!-- play / stop btn -->
+                        <!--div class="btn-group" id="carouselButton">
+                            <button class="btn btn-danger ntb-sm" id="carouselPause">
+                                <i class="fa fa-pause"></i>
+                            </button>
+                            <button class="btn btn-danger ntb-sm" id="carouselPlay">
+                                <i class="fa fa-play"></i>
+                            </button>
+                        </div-->
+                        <button class="btn btn-danger ntb-sm" id="carouselButton">
+                            <i class="fa fa-pause"></i>
+                        </button>
+<!-- stop play / stop btn -->    
+
+
+
                     </div>
                 </div>
             </div>
@@ -220,7 +232,7 @@
                 </div>        
             </div> 
          
-<!--main body picture 2    CORRECTED fix 1&3 later !!!!!          -->    
+<!--main body picture 2 -->    
         
             <div class="row row-content align-items-center"> 
                 <div class="col-sm-4 col-md-3">
@@ -333,6 +345,25 @@
                 $('[data-toggle="tooltip"]').tooltip()
             })
         </script--> 
+<!-- script to play/stop pictures @carousel It will set the carousel image cycle interval 
+    to 2000 ms upon load (the default is 5000 ms otherwise), and implement pause/play 
+    functionality via the jQuery click() method:-->        
+    <script>
+    $(function() {
+        $(".carousel").carousel( { interval: 2000 } );
+        $("#carouselButton").click(function(){
+            if ($("#carouselButton").children("i").hasClass("fa-pause")) {
+                $(".carousel").carousel("pause");
+                $("#carouselButton").children("i").removeClass("fa-pause");
+                $("#carouselButton").children("i").addClass("fa-play");
+            } else {
+                $(".carousel").carousel("cycle");
+                $("#carouselButton").children("i").removeClass("fa-play");
+                $("#carouselButton").children("i").addClass("fa-pause"); 
+            }
+        });
+    });
+</script>
 
     </body>
 
